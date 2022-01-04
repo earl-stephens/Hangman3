@@ -17,8 +17,17 @@ public class Hangman {
 	}
 	
 	public void getPlayerInput() {
+		String input;
 		System.out.print("Enter your guess: ");
-		String input = scanner.nextLine();
+		input = scanner.nextLine();
+		
+		if(input.equals("")) {
+			do {
+			System.out.println("Enter key was pressed without any letters. Try again: "); 
+			input = scanner.nextLine();
+			} while(input.equals(""));
+		} 
+
 		guessedLetter = input.charAt(0);
 		System.out.println(guessedLetter);
 	}
