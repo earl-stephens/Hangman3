@@ -24,4 +24,8 @@ public class RandomWord {
 		characters = sb1.toString();
 		return characters;
 	}
+	
+	public void checkGuess(char guessedLetter) {
+		System.out.println(guessedLetter);
+	}
 }
