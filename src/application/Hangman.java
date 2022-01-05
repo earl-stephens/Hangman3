@@ -29,7 +29,7 @@ public class Hangman {
 		} 
 
 		guessedLetter = input.charAt(0);
-		System.out.println(guessedLetter);
+		word.checkGuess(guessedLetter);
 	}
 	
 	public void displayWord() {
