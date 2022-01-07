@@ -9,6 +9,7 @@ public class Hangman {
 	
 	char guessedLetter;
 	String wordWithLetters;
+	boolean completeFlag = true;
 	
 	public void run() {
 		word.selectWord();
@@ -16,7 +17,8 @@ public class Hangman {
 		do {
 			displayWord();
 			getPlayerInput();
-		} while(true);
+			wordCompleteCheck();
+		} while(completeFlag);
 	}
 	
 	public void getPlayerInput() {
@@ -38,6 +40,10 @@ public class Hangman {
 	
 	public void displayWord() {
 		System.out.println(word);
+	}
+	
+	public void wordCompleteCheck() {
+		completeFlag = word.checkWholeWord();
 	}
 	
 	public void close() {

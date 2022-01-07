@@ -35,6 +35,16 @@ public class RandomWord {
 		return sb1.toString();
 	}
 	
+	public boolean checkWholeWord() {
+		boolean completeFlag = false;
+		for(int i = 0; i < characters.length; i++) {
+			if(characters[i] == '\u0000') {
+				completeFlag = true;
+			}
+		}
+		return completeFlag;
+	}
+	
 	public void checkGuess() {
 		for(int i = 0; i < chosenWord.length(); i++) {
 			if(letterInWord == chosenWord.charAt(i)) {
