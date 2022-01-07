@@ -12,8 +12,11 @@ public class Hangman {
 	
 	public void run() {
 		word.selectWord();
-		displayWord();
-		getPlayerInput();
+
+		do {
+			displayWord();
+			getPlayerInput();
+		} while(true);
 	}
 	
 	public void getPlayerInput() {
@@ -23,18 +26,18 @@ public class Hangman {
 		
 		if(input.equals("")) {
 			do {
-			System.out.println("Enter key was pressed without any letters. Try again: "); 
-			input = scanner.nextLine();
+				System.out.println("Enter key was pressed without any letters. Try again: "); 
+				input = scanner.nextLine();
 			} while(input.equals(""));
 		} 
 
 		guessedLetter = input.charAt(0);
-		word.checkGuess(guessedLetter);
+		word.setLetterInWord(guessedLetter);
+		word.checkGuess();
 	}
 	
 	public void displayWord() {
-		wordWithLetters = word.displayTheWord();
-		System.out.println(wordWithLetters);
+		System.out.println(word);
 	}
 	
 	public void close() {
