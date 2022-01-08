@@ -10,6 +10,7 @@ public class Hangman {
 	char guessedLetter;
 	String wordWithLetters;
 	boolean completeFlag = true;
+	int numberOfTurns = 4;
 	
 	public void run() {
 		word.selectWord();
@@ -18,7 +19,8 @@ public class Hangman {
 			displayWord();
 			getPlayerInput();
 			wordCompleteCheck();
-		} while(completeFlag);
+			turnsRemaining();
+		} while (completeFlag);
 	}
 	
 	public void getPlayerInput() {
@@ -44,9 +46,21 @@ public class Hangman {
 	
 	public void wordCompleteCheck() {
 		completeFlag = word.checkWholeWord();
+		if(!completeFlag) {
+			System.out.println("You won!");
+		}
+	}
+	
+	public void turnsRemaining() {
+		System.out.println("You have " + numberOfTurns + " turn(s) remaining.");
+
+		if(numberOfTurns == 0) {
+			completeFlag = false;
+		}
+		numberOfTurns--;
 	}
 	
 	public void close() {
-		
+		System.out.println("Thanks for playing.");
 	}
 }
