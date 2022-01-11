@@ -19,7 +19,6 @@ public class Hangman {
 			displayWord();
 			getPlayerInput();
 			wordCompleteCheck();
-			turnsRemaining();
 		} while (completeFlag);
 	}
 	
@@ -48,6 +47,8 @@ public class Hangman {
 		completeFlag = word.checkWholeWord();
 		if(!completeFlag) {
 			System.out.println("You won!");
+		} else {
+			turnsRemaining();
 		}
 	}
 	
@@ -57,10 +58,14 @@ public class Hangman {
 		if(numberOfTurns == 0) {
 			completeFlag = false;
 		}
-		numberOfTurns--;
+		if(word.getIncrementTurn()) {
+			numberOfTurns--;
+		}
+
 	}
 	
 	public void close() {
+		scanner.close();
 		System.out.println("Thanks for playing.");
 	}
 }
