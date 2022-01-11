@@ -6,6 +6,7 @@ public class RandomWord {
 	private String chosenWord;
 	private String[] possibleWords = {"someone", "enough", "completely", "honestly", "pretending", "matter", "around", "paradise", "balloons", "together", "direction"};
 	Random random = new Random();
+	private boolean incrementTurn = true;
 
 	public char[] characters;
 	private char letterInWord = '\u0000';
@@ -14,9 +15,12 @@ public class RandomWord {
 		this.letterInWord = letterInWord;
 	}
 	
+	public boolean getIncrementTurn() {
+		return incrementTurn;
+	}
+	
 	public String selectWord() {
-		int length = possibleWords.length;
-		int randomIndex = random.nextInt(length);
+		int randomIndex = random.nextInt(possibleWords.length);
 		chosenWord = possibleWords[randomIndex];
 		characters = new char[chosenWord.length()];
 		return chosenWord;
@@ -46,9 +50,11 @@ public class RandomWord {
 	}
 	
 	public void checkGuess() {
+		incrementTurn = true;
 		for(int i = 0; i < chosenWord.length(); i++) {
 			if(letterInWord == chosenWord.charAt(i)) {
 				characters[i] = letterInWord;
+				incrementTurn = false;
 			}
 		}
 	}
